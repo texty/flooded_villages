@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+
+</head>
+<style>
+
+
+/* medium size */
+
+.medium-screen-viz {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+.step-medium {
+    display: grid;
+    max-width: 100%;
+    align-items: center;
+}
+
+.step-medium > img {
+    width: 100%;
+}
+
+.left-aligned {
+    justify-self: start;
+}
+
+.right-aligned {
+    justify-self: end;
+}
+
+.slide-description {
+    max-width: 300px;
+    width: 90%;
+    border-left: 1px solid grey;
+    padding-left: 10px;
+    height: max-content;
+    opacity: 0;
+}
+
+.locator {
+    width: 50px;
+    display: block;
+}
+
+.step-title {
+    color: #F6968D;
+    font-weight: bold;
+}
+
+.step-medium-1 { grid-template-columns: 300px 300px; }
+.step-medium-2 { grid-template-columns: 300px 300px; }
+.step-medium-3 { grid-template-columns: 300px 400px; }
+.step-medium-4 { grid-template-columns: 300px 300px; }
+.step-medium-5 { grid-template-columns: 300px 150px; }
+.step-medium-6 { grid-template-columns: 300px 450px; }
+
+
+
+@media(max-width: 800px) {
+    .medium-screen-viz {
+        display: none;
+    }
+}
+
+
+/* desktop-size */
+#g-general_map-box,
+	#g-general_map-box .g-artboard {
+		margin:0 auto;
+	}
+
+	p {
+		margin:0;
+	}
+
+	#g-general_map-box .g-aiAbs {
+		position:absolute;
+	}
+
+	#g-general_map-box .g-aiImg {
+		position:absolute;
+		top:0;
+		display:block;
+		width:100% !important;
+	} 
+	#g-general_map-box .g-aiSymbol {
+		position: absolute;
+		box-sizing: border-box;
+	} 
+	 #Artboard_1 {
+		position:relative;
+		overflow:hidden;
+	}
+
+
+	.step-desktop, .svg { opacity:0;}
+	.step-desktop-1, .svg-1 { opacity:1; }
+
+
+
+    @media(max-width: 1200px){
+		.desktop-screen-viz  {
+			display: none;
+		}
+	}
+
+    @media(min-width: 1199px){
+		.medium-screen-viz  {
+			display: none;
+		}
+	}
+
+
+
+
+
+</style>
+<body>
+
+    <div id="g-general_map-box" class="desktop-screen-viz">
+        <div id="Artboard_1" class="g-artboard" style="max-width: 4146px;max-height: 5633px" data-aspect-ratio="0.736" data-min-width="0">
+    <div style="padding: 0 0 135.8678% 0;"></div>
+            <img id="g-general_map-Artboard_1-img" class="g-general_map-Artboard_1-img g-aiImg" alt="" src="desktop-viz-pics/map.jpg"/>
+            <img id="g-map-06-img" class="g-aiImg svg" alt="" src="desktop-viz-pics/_06.svg"/>
+            <img id="g-map-05-img" class="g-aiImg svg" alt="" src="desktop-viz-pics/_05.svg"/>
+            <img id="g-map-04-img" class="g-aiImg svg" alt="" src="desktop-viz-pics/_04.svg"/>
+            <img id="g-map-03-img" class="g-aiImg svg" alt="" src="desktop-viz-pics/_03.svg"/>
+            <img id="g-map-02-img" class="g-aiImg svg" alt="" src="desktop-viz-pics/_02.svg"/>
+            <img id="g-map-01-img" class="g-aiImg svg svg-1" alt="" src="desktop-viz-pics/_01.svg"/>
+            <div class="g-01 g-aiAbs step-desktop step-desktop-1" data-img="g-map-01-img" style="top:14.9652%;left:30.7433%;width:23.3478%;">
+                <p class="step-title">Київське водосховище</p>
+                <p>&nbsp;</p>
+                <p>За часом створення є п&rsquo;ятим у каскаді, остаточно заповнене водою в 1966 році.</p>
+                <p>&nbsp;</p>
+                <p>За підрахунками ТЕКСТІВ (детальніше дивись у розділі &ldquo;Джерела&rdquo;), число затоплених/відселених сіл тут найменше з усіх водосховищ каскаду - 13.</p>
+            </div>
+            <div class="g-02 g-aiAbs step-desktop" data-img="g-map-02-img"  style="top:29.4865%;left:40.3876%;width:23.3478%;">
+                <p class="step-title">Канівське водосховище</p>
+                <p>&nbsp;</p>
+                <p>Створене останнім (наповнилося протягом 1974-1976 років). Внаслідок його появи, зникли під водою або були виселені у зв&rsquo;язку з затопленням 20 населених пунктів.</p>
+            </div>
+            <div class="g-03 g-aiAbs step-desktop" data-img="g-map-03-img" style="top:46.653%;left:8.6317%;width:23.3478%;">
+                <p class="step-title">Кременчуцьке водосховище</p>
+                <p>&nbsp;</p>
+                <p>Заповнене водою четверим за рахунком в 1959-1961 роках. На карті водосховища в Черкаському обласному краєзнавчому музеї позначені &ldquo;212 пунктів, що потрапили в зону затоплення &hellip; із населенням 133 тисячі осіб&rdquo;, що робить Кременчуцьке водосховище безсумнівним рекордсменом з затоплення.</p>
+            </div>
+            <div class="g-04 g-aiAbs step-desktop" data-img="g-map-04-img" style="top:56.4522%;left:42.5278%;width:17.7038%;">
+                <p class="step-title">Кам&rsquo;янське водосховище</p>
+                <p>&nbsp;</p>
+                <p>Передостаннє, п&rsquo;яте за заповненням водосховище (1963-64 роки). За кількістю затоплених сіл (37) Кам&rsquo;янське водосховище посідає впевнене друге місце.</p>
+            </div>
+            <div  class="g-05 g-aiAbs step-desktop" data-img="g-map-05-img" style="top:66.074%;left:56.265%;width:18.0174%;">
+                <p class="step-title">Дніпровське водосховище</p>
+                <p>&nbsp;</p>
+                <p>Заповнене першим, ще в часи сталінської індустріалізації (1932 рік). Було затоплено щонайменше 26 населених пунктів.</p>
+            </div>
+            <div class="g-06 g-aiAbs step-desktop" data-img="g-map-06-img" style="top:76.4413%;left:33.6933%;width:20.5258%;">
+                <p class="step-title">Каховське водосховище</p>
+                <p>&nbsp;</p>
+                <p>Було заповнено в 1955-1958 роках, ставши другою за часом створення й за величиною водоймою Дніпровського каскаду. В процесі створення моря пішли на дно 29 населених пунктів.</p>
+            </div>
+        </div>
+    
+    </div>
+
+    
+    
+    
+    
+    <div class="medium-screen-viz">
+    <div class="step-medium left-aligned step-medium-1" style="grid-column: 1 / 12; grid-row: 1/2; margin-top: 50px;">
+        <img src="medium-viz-pics/01.webp"/>
+        <div class="slide-description">
+            <img class="locator" src="locator/01.webp"/>
+            <p class="step-title">Київське водосховище</p>
+            <p>&nbsp;</p>
+            <p>За часом створення є п&rsquo;ятим у каскаді, остаточно заповнене водою в 1966 році.</p>
+        
+            <p>За підрахунками ТЕКСТІВ (детальніше дивись у розділі &ldquo;Джерела&rdquo;), число затоплених/відселених сіл тут найменше з усіх водосховищ каскаду - 13.</p>
+        </div>
+    </div>
+
+    <div class="step-medium left-aligned step-medium-2" style="grid-column: 2 / 12; grid-row: 2/3;" >
+        <img src="medium-viz-pics/02.webp"/>
+        <div class="slide-description">
+            <img class="locator" src="locator/02.webp"/>
+            <p class="step-title">Канівське водосховище</p>
+            <p>&nbsp;</p>
+            <p>Створене останнім (наповнилося протягом 1974-1976 років). Внаслідок його появи, зникли під водою або були виселені у зв&rsquo;язку з затопленням 20 населених пунктів.</p>
+        </div>
+    </div>
+
+    <div class="step-medium left-aligned step-medium-3" style="grid-column: 3 / 12; grid-row: 3/4;">
+       
+        <div class="slide-description">
+            <img class="locator" src="locator/03.webp"/>
+            <p class="step-title">Кременчуцьке водосховище</p>
+            <p>&nbsp;</p>
+            <p>Заповнене водою четверим за рахунком в 1959-1961 роках. На карті водосховища в Черкаському обласному краєзнавчому музеї позначені &ldquo;212 пунктів, що потрапили в зону затоплення &hellip; із населенням 133 тисячі осіб&rdquo;, що робить Кременчуцьке водосховище безсумнівним рекордсменом з затоплення.</p>
+        </div>
+        <img src="medium-viz-pics/03.webp"/>
+    </div>
+
+    <div class="step-medium right-aligned step-medium-4" style="grid-column: 1/-3; grid-row: 4/5;">
+       
+        <div class="slide-description">
+            <img class="locator" src="locator/04.webp"/>
+            <p class="step-title">Кам'янське водосховище</p>
+            <p>&nbsp;</p>
+            <p>Передостаннє, п'яте за заповненням водосховище (1963-64 роки). За кількістю затоплених сіл (37) Кам&rsquo;янське водосховище посідає впевнене друге місце.</p>
+        </div>
+        <img src="medium-viz-pics/04.webp"/>
+    </div>
+
+    <div class="step-medium right-aligned step-medium-5" style="grid-column: 1/-1; grid-row: 5/6;">
+        <div class="slide-description">
+            <img class="locator" src="locator/05.webp"/>
+            <p class="step-title">Дніпровське водосховище</p>
+            <p>&nbsp;</p>
+            <p>Заповнене першим, ще в часи сталінської індустріалізації (1932 рік). Було затоплено щонайменше 26 населених пунктів.</p>
+        </div>
+        <img  src="medium-viz-pics/05.webp"/>
+
+    </div>
+
+    <div class="step-medium right-aligned step-medium-6" style="grid-column: 1/-2; grid-row: 6/7;">
+        <div class="slide-description">
+            <img class="locator" src="locator/06.webp"/>
+            <p class="step-title">Каховське водосховище</p>
+            <p>&nbsp;</p>
+            <p>Було заповнено в 1955-1958 роках, ставши другою за часом створення й за величиною водоймою Дніпровського каскаду. В процесі створення моря пішли на дно 29 населених пунктів.</p>
+        </div>
+        <img   src="medium-viz-pics/06.webp"/>
+    </div>
+    
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<script>
+
+
+$(document).ready(function() {
+  var lastVisibleDesktop;
+  var lastVisibleMedium;
+
+  $(window).on('scroll', function() {
+    var windowHeight = $(window).height(),
+    gridTop = windowHeight * .5;
+
+    $('.slide-description').each(function() {
+     var thisTop = $(this).offset().top - $(window).scrollTop();
+
+      if (thisTop <= gridTop) {
+
+        // Hide the last visible element
+        if (lastVisibleMedium) {
+            lastVisibleMedium.css('opacity', '0');
+          var lastImgId = lastVisibleMedium.data('img');
+          $('#' + lastImgId).css('opacity', '0');
+        }
+
+        // Show the current element
+        $(this).css('opacity', '1');
+        var imgId = $(this).data('img');
+        $('#' + imgId).css('opacity', '1');
+
+        // Update the last visible element
+        lastVisibleMedium = $(this);
+		
+      }
+    });
+
+
+    $('.step-desktop').each(function() {
+     var thisTop = $(this).offset().top - $(window).scrollTop();
+
+      if (thisTop <= gridTop) {
+        // Hide the last visible element
+        if (lastVisibleDesktop) {
+            lastVisibleDesktop.css('opacity', '0');
+          var lastImgId = lastVisibleDesktop.data('img');
+          $('#' + lastImgId).css('opacity', '0');
+        }
+
+        // Show the current element
+        $(this).css('opacity', '1');
+        var imgId = $(this).data('img');
+        $('#' + imgId).css('opacity', '1');
+
+        // Update the last visible element
+        lastVisibleDesktop = $(this);
+		
+      }
+    });
+
+  });
+  $(window).trigger('scroll');
+});
+
+  </script>
+
+</body>
+</html>
