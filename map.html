@@ -89,10 +89,9 @@
 
   .mini-map {
     display: block;
-    width: 100px;
+    width: 100%;
     cursor: pointer;
     background-color: #ffffffd8;
-    /* border-radius: 50%; */
 
   }
 
@@ -109,6 +108,23 @@
     transform-origin: bottom center;
 
   }
+  @media(max-width: 768px) {
+    .mini-maps {
+      grid-column: 1/3;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      height: 100px;
+    }
+
+    .mini-map-label {
+      margin: 0 auto;
+      font-size: 9px;
+    }
+  }
+
+  .maptalks-zoom-zoomlevel {
+  display: none !important;
+}
 </style>
 
 <body>
@@ -173,6 +189,12 @@
       minZoom: 7,
       maxZoom: 11,
     });
+
+    var zoomControl = new maptalks.control.Zoom({
+      position: 'bottom-right'
+    });
+
+map.addControl(zoomControl);
 
     map.config('draggable', true);
 
