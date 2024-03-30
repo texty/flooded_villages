@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  html,
+  body {
+    margin: 0px;
+    height: 100%;
+    width: 100%
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 1fr;
+  }
+
+  .map-container {
+    grid-column: 1/4;
+    grid-row: 1/2;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 80px auto;
+  }
+
+  #map {
+    grid-column: 1/3;
+    grid-row: 1/2;
+    width: 100%;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    left: 0;
+    /* pointer-events: none; */
+  }
+
+  .pane {
+    background: #34495e;
+    line-height: 28px;
+    color: #fff;
+    z-index: 10;
+    position: absolute;
+    top: 20px;
+    right: 20px
+  }
+
+  .pane a {
+    display: block;
+    color: #fff;
+    text-align: left;
+    padding: 0 10px;
+    min-width: 28px;
+    min-height: 28px;
+    float: left
+  }
+
+  .text {
+    /* height: 100vh; */
+    grid-row: 1/2;
+    padding-left: 25px;
+    grid-column: 2/4;
+    max-width: 600px;
+    margin: auto;
+    /* overflow: scroll; 
+    font-size: 20px;
+    background: linear-gradient(90deg, #ffffff69 0%, white 20%);*/
+    z-index: 100;
+    color: black;
+  }
+
+  .text span {
+    color: #f7a39c;
+    /* font-style: italic; */
+  }
+
+  .mini-maps {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+  }
+
+  .mini-map {
+    display: block;
+    width: 100px;
+    cursor: pointer;
+    background-color: #ffffffd8;
+    /* border-radius: 50%; */
+
+  }
+
+  .mini-map img {
+    width: 100%;
+  }
+
+  .mini-map-label {
+    display: block;
+    margin: 0 auto -15px auto;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 11px;
+    transform-origin: bottom center;
+
+  }
+</style>
+
+<body>
+
+  <!-- https://jsfiddle.net/0edoLmq1/19/ -->
+  <link rel="stylesheet" href="https://unpkg.com/maptalks/dist/maptalks.css">
+  <script type="text/javascript" src="https://unpkg.com/maptalks/dist/maptalks.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/turf@3.0.14/turf.min.js"></script>
+
+
+  <main>
+    <div class="map-container">
+      <div class="mini-maps">
+        <div class='mini-map' data-coords="[30.47, 50.95]" data-zoom="10">
+          <p class="mini-map-label">Київське</p>
+          <img src="medium-viz-pics/01.webp" />
+        </div>
+        <div class='mini-map' data-coords="[31.18, 50.00]" data-zoom="10.6">
+          <p class="mini-map-label">Канівське</p>
+          <img src="medium-viz-pics/02.webp" />
+        </div>
+
+        <div class='mini-map' data-coords="[32.622525805491364, 49.28567916921557]" data-zoom="10.6">
+          <p class="mini-map-label">Кременчуцьке</p>
+          <img src="medium-viz-pics/03.webp" />
+        </div>
+
+        <div class='mini-map' data-coords="[34.092122262951875, 48.81827089593898]" data-zoom="10.6">
+          <p class="mini-map-label">Камʼянське</p>
+          <img src="medium-viz-pics/04.webp" />
+        </div>
+
+        <div class='mini-map' data-coords="[35.12495146933156, 48.098027624098705]" data-zoom="10.6">
+          <p class="mini-map-label">Дніпровське</p>
+          <img src="medium-viz-pics/05.webp" />
+        </div>
+
+        <div class='mini-map' data-coords="[33.980384827678904, 47.3456432880146]" data-zoom="10.6">
+          <p class="mini-map-label">Каховське</p>
+          <img src="medium-viz-pics/06.webp" />
+        </div>
+        \
+      </div>
+      <div id="map" class="container"></div>
+
+    </div>
+  </main>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+
+  <script>
+    var center = new maptalks.Coordinate(32.8, 49.2);
+    var extent = new maptalks.Extent(28, 43, 37, 52);
+
+    var label_threshold = 10.5;
+
+    var map = new maptalks.Map('map', {
+      center: center,
+      zoom: 10.6,
+      seamlessZoom: true,
+      pitch: 0,
+      minZoom: 7,
+      maxZoom: 11,
+    });
+
+    map.config('draggable', true);
+
+
+    //our custom tiles
+    var customLayer = new maptalks.TileLayer('custom', {
+      urlTemplate: 'tiles/{z}/{x}/{y}.png',
+      subdomains: ['a', 'b', 'c', 'd'],
+      attribution: '&copy; <a href="http://maptalks.org" target="_blank">MapTalks</a> contributors'
+    });
+
+    map.addLayer(customLayer);
+
+    var labels = []; 
+ 
+    fetch('points/points.geojson')
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        var geometries = maptalks.GeoJSON.toGeometry(data);
+
+        var circles = geometries.map(function (geometry) {
+          var coordinate = geometry.getCoordinates();
+          var circle = new maptalks.Circle(coordinate, 500, {
+            symbol: {
+              'lineColor': 'transparent',
+              'lineWidth': 2,
+              'polygonFill': '#ED6461',
+              'polygonOpacity': 1
+            }
+          });
+
+          var label = new maptalks.Label(geometry.properties.Name, coordinate, {
+            'textSymbol': {
+              'textFaceName': 'arial',
+              'textFill': 'grey',
+              'textSize': 10,
+              'textVerticalAlignment': 'middle',
+              'textHorizontalAlignment': 'right',
+              'textDx': 0,
+              'textHaloFill': '#ffffff', 
+              'textHaloRadius': 1 
+            }
+          })
+
+         
+          labels.push(label); 
+
+
+          //small zoom - show labels on mouseover
+          circle.on('mouseover', function () {
+            if (map.getZoom() <= label_threshold) {
+              vectorLayer.addGeometry(label);
+            }
+          });
+
+          circle.on('mouseout', function () {
+            if (map.getZoom() <= label_threshold) {
+              vectorLayer.removeGeometry(label);
+            }
+          });
+
+          return [circle, label];
+        });
+
+        var vectorLayer = new maptalks.VectorLayer('vector', [].concat.apply([], circles));
+        map.addLayer(vectorLayer);
+
+        //big zoom - show labels by default
+        map.on('zoomend', function () {
+          if (map.getZoom() > label_threshold) {
+            vectorLayer.addGeometry(labels);
+          } else {
+            vectorLayer.removeGeometry(labels);
+          }
+        });
+      });
+
+
+    $('.mini-map').on("click", function () {
+      var dataCoords = $(this).data('coords');
+      var dataZoom = $(this).data('zoom');
+      map.setView({
+        center: dataCoords,
+        zoom: dataZoom
+      });
+    });
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>
